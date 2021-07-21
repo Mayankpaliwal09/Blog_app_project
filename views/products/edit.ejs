@@ -1,0 +1,43 @@
+<%- include('../partials/header') %>
+    <%- include('../partials/navbar') %>
+    <style>
+        footer {
+        position:fixed;
+        bottom:0;
+        width:100%;
+    }
+    .buttons{
+        width: 20px;
+    }
+    </style>
+        <h1 style="text-align: center;">Edit page for the product</h1>
+
+
+        <div class="container">
+            <form class="validated-form" action="/products/<%=product._id %>?_method=PATCH" method="POST" novalidate>
+                <div class="mb-3">
+                    <label for="name" class="form-label">Name of Product: </label>
+                    <input type="text" class="form-control" id="name" placeholder="Enter the name of product: " name="product[title]" value="<%=product.title%>" required>
+                    <!-- <dv id="emailHelp" class="form-text">We'll never share your email imagev> -->
+                </div>
+             <div>
+                    <label for="desc" class="form-label">Description: </label>
+                    <textarea id="desc" cols="30" rows="6" class="form-control" placeholder="Enter description here: "
+                        name="product[desc]" required><%= product.desc %> </textarea>
+                </div>
+                <div class="mb-3">
+                    <label for="price" class="form-label">author: </label>
+                    <input type="text" class="form-control" id="price" placeholder="Enter the price: "
+                        name="product[auther]" value="<%=product.auther%>" required>
+                </div>
+                <!-- //here we have made an objet of product i.e name idk why  -->
+                <!-- <textarea name="desc" id="desc" cols="50" rows="5" placeholder="Enter the description: " style="cursor: pointer; margin: 10px auto;"></textarea> -->
+                <!-- <br><br> -->
+                    <button type="submit" class="btn btn-success">update</button>
+            </form>
+
+
+        </div>
+
+
+        <%- include("../partials/footer") %>

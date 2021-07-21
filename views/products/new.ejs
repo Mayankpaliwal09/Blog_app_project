@@ -1,0 +1,53 @@
+<%-include('../partials/header')  %> 
+<%-include('../partials/navbar')  %> 
+<style>
+    footer {
+    position:fixed;
+    bottom:0;
+    width:100%;
+}
+</style>
+
+<h1 style="text-align: center; color: red; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">Adding New Blog</h1>
+
+<div class="container">
+    
+    <form class="validated-form" action="/products" method="POST" novalidate>
+
+        <div class="mb-3">
+            <label for="title" class="form-label">Title: </label>
+            <input type="text" class="form-control" id="title" placeholder="Title of blog here..." name="product[title]" required>
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+        </div>
+            
+          <br>
+          
+        <div class="mb-3">
+            <label for="desc" class="form-label">Description: </label>
+            <textarea class="form-control" id="desc" rows="5" placeholder="Description here..." name="product[desc]" required></textarea>
+            <div class="valid-feedback">
+                Looks good!
+              </div>
+        </div>
+            
+        <br>
+        
+        <div class="mb-3">
+            <label for="auther" class="form-label">Author: </label>
+            <input type="text" class="form-control" id="auther" placeholder="Name of Author..." name="product[auther]" required>
+            <div class="valid-feedback">
+                Looks good!
+              </div>
+        </div>
+        <button type="submit" class="btn btn-success">Add</button>
+
+    </form>
+
+</div>
+
+
+
+
+<%-include('../partials/footer')  %> 

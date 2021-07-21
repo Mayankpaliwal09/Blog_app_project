@@ -1,0 +1,106 @@
+<%- include('../partials/header') %> 
+<%- include('../partials/navbar') %> 
+<style>
+    footer {
+    position:fixed;
+    bottom:0;
+    width:100%;
+}
+.buttons{
+    width: 20px;
+}
+</style>
+   
+
+    <div class="mt-2 mb-3" style=" height: 110px; background-color: rgb(228, 222, 228);">
+        <h1 style="text-align: center; " class="display-1  "><i class="fas fa-blog" style="margin-right: 20px;"></i>Blog page</h1>
+    </div>
+
+    <!-- //alert for flash but we will use in flash.ejs partials
+    <div class="alert alert-success alert-dismissible fade show" role="alert" style="text-align: center; color: red;font-size: large;font-weight: 800;">
+        <strong><%= success %></strong> 
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div> -->
+
+<%- include('../partials/flash') %> 
+
+
+
+    
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <br><br>
+                <div class="card" style="height: auto; width: 430px;">
+                    
+                    <div class="card-body">
+                        <h5 class="card-title"><%= product.title %> </h5>
+                        
+                        <p class="card-text"><%= product.desc %> </p>
+                        <div class="blockquote-footer">Author ~ <cite title="Source Title"><%= product.auther %> </cite></div>
+                        <a href="/products" class="btn btn-secondary"> Go back</a>
+                        
+                        <a href="/products/<%= product._id %>/edit" class="btn btn-primary"> Edit </a>
+                        
+                        <form action="/products/<%=product._id%>?_method=DELETE" method="POST">
+                            <button class="btn btn-danger mt-2">Delete</button>
+                        </form>
+                        <br><br><br>
+                    </div>
+                </div>
+            </div>
+            
+            
+            
+            <!-- reviews -->
+            <div class="col-lg-6 col-md-8 col-sm-10">
+                <br>
+                <h1>Reviews of this Blog:</h1>
+                <form class="validated-form" action="/products/<%=product._id%>/review" method="POST" novalidate>
+
+                    <div class="mb-3">
+                        <label for="rating" class="form-label">Rating: </label>
+                        <input type="range" min="0" max="5" class="form-control" id="rating" name="rating" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="review" class="form-label">Review: </label>
+                        <textarea class="form-control" id="review" rows="3" name="comment" required></textarea>
+                        <div class="valid-feedback">   <!-- // valid feedback is for the looking for its betterment and to give acknowledgement that this is filled -->
+                            Looks good!
+                        </div>
+                    </div>
+                
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                    
+                </form>
+                <!-- showing total reviews already stated -->
+                <div class="mb-3 mt-3" >
+                    <%for(let review of product.reviews){%>
+                        <div class="card mb-3" style="height: auto;">
+                            
+                            <div class="card-header text-capitalize">
+                             <strong> <%= review.user %> </strong> 
+                            </div>
+                            <div class="card-body">
+                              <h5 class="card-title">Rating : <%=review.rating%></h5>
+                              <p class="card-text"><%=review.comment%></p>
+
+                              <!-- deleting comment -->
+                              <form action="/products/<%= product._id %>/<%=review._id%>?_method=DELETE" method="POST">
+                                <button class="btn btn-danger mt-2">Delete</button>
+                              </form>
+                            <!-- deleting comment till here -->
+
+                            </div>
+                          </div>
+        
+                    <%}%>
+                </div>
+            </div>
+       
+        </div>
+    
+        <br><br><br>
+    </div>
+    </section>
+<%- include('../partials/footer') %> 

@@ -1,0 +1,55 @@
+<%- include('../partials/header') %> 
+<%- include('../partials/navbar') %> 
+<style>
+  footer {
+  position:fixed;
+  bottom:0;
+  width:100%;
+}
+.buttons{
+  width: 20px;
+}
+</style>
+ 
+   
+
+    <div class="mt-2 mb-3" style=" height: 110px; background-color: rgb(228, 222, 228);">
+        <h1 style="text-align: center; " class="display-1  "><i class="fas fa-blog" style="margin-right: 20px;"></i>Blog page</h1>
+    </div>
+
+
+    <section class="container">
+<%- include('../partials/flash') %> 
+
+     
+      <!-- <div style="text-align: center; color: red;font-size: large;font-weight: 800;"><%= success %></div>  -->
+      <!-- //alert for flash  -->
+      <!-- <div class="alert alert-success alert-dismissible fade show" role="alert" style="text-align: center; color: red;font-size: large;font-weight: 800;">
+          <strong><%= success %></strong> 
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div> -->
+        <div class="row">
+            <% for(let product of products){  %> 
+            <div class="col-lg-6 col-md-8 col-sm-10 ">
+                <div class="card">
+                    <div class="card-header" style="font-size: 30px;">
+                      <%= product.title %>
+                      <br>
+                    </div>
+                    <div class="card-body">
+                      <blockquote class="blockquote mb-0">
+                        <p><%= product.desc.substring(0,90) %>... <i style="font-weight: lighter;">Click to read more</i>  </p>
+                        <br>
+                        <footer class="blockquote-footer">Author ~ <cite title="Source Title"><%= product.auther %> </cite></footer>
+                      </blockquote>
+                    </div>
+                    <a href="/products/<%= product._id %>" class="btn btn-info" style="width: 80%; margin: 5px auto;">Read</a>
+                  </div>
+            </div>
+            <% } %> 
+        </div>
+    </section>
+    <br>
+    <br>
+    <br>
+<%- include('../partials/footer') %> 
