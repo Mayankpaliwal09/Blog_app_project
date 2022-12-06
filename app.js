@@ -22,7 +22,7 @@ const authRoutes = require('./routes/auth');
 
 
 //conecting dbs
-mongoose.connect('mongodb://localhost:27017/codingblocks', // shopApp naam ka database hoga to conect hojaega else create hojjega
+mongoose.connect('mongodb://localhost:27017/Blog_app', // shopApp naam ka database hoga to conect hojaega else create hojjega
             {useNewUrlParser: true, 
              useUnifiedTopology: true,
              useFindAndModify:false,
@@ -99,6 +99,10 @@ app.use(authRoutes);
 
 
 //landing page
+app.get('/',(req,res)=>{
+    res.render('products/home');
+})
+
 app.get('/home',(req,res)=>{
     res.render('products/home');
 })
